@@ -12,6 +12,7 @@ author: Matt
 
 1. [Apr-27-2020 - Rust Analyzer: First Release](#apr-27-2020)
 2. [Apr-30-2020 - Rust + nix = easier unix systems programming](#apr-30-2020)
+3. [May-22-2020 - Rust: Dropping heavy things in another thread can make your code 10000 times faster](#may-22-2020)
 
 
 ## Apr-27-2020
@@ -59,6 +60,27 @@ Also rust's `Result` type comes in handy for dealing with operations that might 
 
 _Fun fact: Kamal was one of my mentors during [Rust Reach][9]_
 
+## May-22-2020
+
+**Title:** [Rust: Dropping heavy things in another thread can make your code 10000 times faster][11]
+
+An interesting optimization trick of deferring value dropping to a different thread.
+
+The gist is that:
+```rust
+fn get_size(a: HeavyThing) -> usize {
+    let size = a.size();
+    std::thread::spawn(move || drop(a));
+    size
+}
+```
+is faster than when the drop occurs in the current thread. There is a [gist][12] that measures the performance
+improvements. It's interesting that the overhead of spawning a thread is low enough to allow for this to work, wow!
+
+I would say always prefer passing by reference to passing by value.
+
+
+
 [1]: https://rust-analyzer.github.io/blog/2020/04/20/first-release.html
 [2]: https://github.com/rust-analyzer/rust-analyzer
 [3]: https://microsoft.github.io/language-server-protocol/
@@ -69,3 +91,5 @@ _Fun fact: Kamal was one of my mentors during [Rust Reach][9]_
 [8]: https://github.com/nix-rust/nix/
 [9]: https://blog.rust-lang.org/2017/06/27/Increasing-Rusts-Reach.html
 [10]: https://github.com/nix-rust/nix/blob/5c8cdd005270557ceb91cdafc1eca7c971ee9219/src/unistd.rs#L162-L165
+[11]: https://abramov.io/rust-dropping-things-in-another-thread
+[12]: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=e6036d23879b0d0abda5196dfa8a131e
