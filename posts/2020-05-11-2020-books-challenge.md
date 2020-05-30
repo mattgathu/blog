@@ -14,6 +14,7 @@ I have been participating in the GoodRead's reading challenge this year, and I'v
 This is my attempt at summarizing my reading.
 
 1. [Dune - Frank Herbert](#dune)
+2. [1984 - George Orwell](#1984)
 
 
 ## Dune
@@ -33,5 +34,32 @@ This forces somehow seem to all work together,that's until Paul comes along and 
 > “I must not fear. Fear is the mind-killer. Fear is the little-death that brings total obliteration. I will face my  fear. I will permit it to pass over me and through me. And when it has gone past I will turn the inner eye to see its path. Where the fear has gone there will be nothing. Only I will remain.”
 
 
+## 1984
+
+![1984-cover][1984-cover]
+
+A profound read that I can summarize with this quote:
+
+> “Power tends to corrupt, and absolute power corrupts completely." ~ Lord Acton
+
+This quote isn't from the book but it captures its essence; a totalitarian regime that has upended its world for the
+sole purpose of staying in power indefinitely. The Party, an new age successor to socialism and communism rules Oceania
+ through suppression of all human instincts and freedom except for those that further its cause.
+
+There is no freedom of expression or speech. Newspeak is designed for the restriction of thought and expression. 
+There are thought crimes. Sexual intimacy is punishable. 
+Constant surveillance is the norm, the telescreens and microphones are everywhere. All your movements are monitored.
+
+There is a fanaticism to towards Big Brother, the embodiment of the The Party. 
+Everyone loves big brother. Truth is constantly being rewritten. The truth is what the party deems it to be.
+
+The book starts and ends in despair. Winston the protagonist ,aware of his entrapment, 
+seeks to free himself of it and finds some hope in his forbidden love to Julia but 
+ultimately the The Party captures them and breaks them down until all that is left is 
+love for Big Brother. _There is no hope in the book._
+
+> “Who controls the past controls the future; who controls the present controls the past"
+
 
 [dune-cover]: /images/dune-cover.jpg
+[1984-cover]: /images/1984-cover.jpg
