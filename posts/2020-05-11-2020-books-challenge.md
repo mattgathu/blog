@@ -15,6 +15,7 @@ This is my attempt at summarizing my reading.
 
 1. [Dune - Frank Herbert](#dune)
 2. [1984 - George Orwell](#1984)
+3. [Stories of our Lives - The Nest Collective](#stories-of-our-lives)
 
 
 ## Dune
@@ -60,6 +61,21 @@ love for Big Brother. _There is no hope in the book._
 
 > “Who controls the past controls the future; who controls the present controls the past"
 
+## Stories of our Lives
+
+![stories-of-our-lives][stories-of-our-lives]
+
+This collection of queer Kenyan narratives is an uncut gem; rough, raw and unpolished, but of great value.
+It is a disparate mix of stories about what it means to be queer in Kenya. I laughed, cried, felt
+anger, felt hate and ultimately felt love while reading it. 
+
+It expanded my view of what being gay or queer means and instilled in me a great appreciation for
+people who identify as nonbinary. It made have a deeper appreciation of what being human meant and
+how we shape our society and our society shapes us.
+
+Such an essential and brave work especially in an African setting, where being queer is both taboo and
+a death sentence.
 
 [dune-cover]: /images/dune-cover.jpg
 [1984-cover]: /images/1984-cover.jpg
+[stories-of-our-lives]: /images/stories-of-our-lives.jpg
