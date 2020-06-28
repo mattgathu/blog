@@ -13,6 +13,7 @@ author: Matt
 1. [Apr-27-2020 - Rust Analyzer: First Release](#apr-27-2020)
 2. [Apr-30-2020 - Rust + nix = easier unix systems programming](#apr-30-2020)
 3. [May-22-2020 - Rust: Dropping heavy things in another thread can make your code 10000 times faster](#may-22-2020)
+4. [Jun-27-2020 - Examining ARM vs X86 Memory Models with Rust](#jun-27-2020)
 
 
 ## Apr-27-2020
@@ -79,6 +80,59 @@ improvements. It's interesting that the overhead of spawning a thread is low eno
 
 I would say always prefer passing by reference to passing by value.
 
+## Jun-27-2020
+
+**Title:** [Examining ARM vs X86 Memory Models with Rust][13]
+
+> The way loads and stores to memory interact between multiple threads on a specific CPU is called that architecture’s Memory Model.
+
+The memory model determines the order by which multiple writes by one thread become visible to other threads. And this is also true for a thread doing multiple reads. _This out of order execution is done to maximize memory operations throughput_.
+
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Nb2tebYAaOA?start=404" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+_Jim Keller explaining out-of-order execution_.
+
+Memory operations re-ordering by CPU affects the execution of multi-threaded code.
+
+```rust
+pub unsafe fn writer(u32_ptr_1: *mut u32, u32_ptr_2: *mut u32) {
+    u32_ptr_1.write_volatile(58);
+    u32_ptr_2.write_volatile(42);
+}
+
+pub unsafe fn reader(u32_ptr_1: *mut u32, u32_ptr_2: *mut u32) -> (u32, u32) {
+    (u32_ptr_1.read_volatile(), u32_ptr_2.read_volatile())
+}
+```
+
+> If we initialize the contents of both pointers to 0, and then run each function in a different thread, we can list the possible outcomes for the reader. We know that there is no synchronization, but based on our experience with single threaded code we think the possible return values are (0, 0), (58, 0) or (58, 42). But the possibility of hardware reordering of memory writes affecting multi-threads means that there is a fourth option (0, 42).
+
+This issue is easily fixed using [Atomic types][14] which present operations that synchronize updates between threads. [Atomic memory orderings][15] can further be used to specify the way atomic operations synchronize memory.
+
+```rust
+pub enum Ordering {
+    Relaxed,
+    Release,
+    Acquire,
+    AcqRel,
+    SeqCst,
+}
+```
+
+There is risk that Rust code might produce different (in an execution sense) assembly code on different CPUs.
+
+> The mapping between the theoretical Rust memory model and the X86 memory model is more forgiving to programmer error. It’s possible for us to write code that is wrong with respect to the abstract memory model, but still have it produce the correct assembly code and work correctly on some CPU’s.
+
+
+> Where the memory model of ARM differs from X86 is that ARM CPU’s will re-order writes relative to other writes, whereas X86 will not.
+
+To ensure correctness, it's crucial to use the correct memory ordering in the Rust code.
+
+> Using the atomic module still requires care when working across multiple CPU’s. As we saw from looking at the X86 vs ARM assembly outputs, if we replace Ordering::Release with Ordering::Relaxed on our store we’d be back to a version that worked correctly on x86 but failed on ARM. It’s especially required working with AtomicPtr to avoid undefined behavior when eventually accessing the value pointed at.
+
+
+
 
 
 [1]: https://rust-analyzer.github.io/blog/2020/04/20/first-release.html
@@ -93,3 +147,6 @@ I would say always prefer passing by reference to passing by value.
 [10]: https://github.com/nix-rust/nix/blob/5c8cdd005270557ceb91cdafc1eca7c971ee9219/src/unistd.rs#L162-L165
 [11]: https://abramov.io/rust-dropping-things-in-another-thread
 [12]: https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=e6036d23879b0d0abda5196dfa8a131e
+[13]: https://www.nickwilcox.com/blog/arm_vs_x86_memory_model/
+[14]: https://doc.rust-lang.org/nightly/std/sync/atomic/index.html
+[15]: https://doc.rust-lang.org/nightly/std/sync/atomic/enum.Ordering.html
