@@ -10,12 +10,14 @@ keywords: books, journal, 2020
 author: Matt
 ---
 
-I have been participating in the GoodRead's reading challenge this year, and I've read 10 titles so far.
+I have been participating in the [GoodRead's reading challenge][goodread-challenge] this year, and I've read 10 titles so far.
 This is my attempt at summarizing my reading.
 
 1. [Dune - Frank Herbert](#dune)
 2. [1984 - George Orwell](#1984)
 3. [Stories of our Lives - The Nest Collective](#stories-of-our-lives)
+4. [Critical Thinking - Jonathan Haber](#critical-thinking)
+5. [Ender's Game - Orson Scott Card](#enders-game)
 
 
 ## Dune
@@ -76,6 +78,58 @@ how we shape our society and our society shapes us.
 Such an essential and brave work especially in an African setting, where being queer is both taboo and
 a death sentence.
 
+## Critical Thinking
+
+![critical-thinking][critical-thinking-cover]
+
+Jonathan Haber introduces critical thinking, outlining its history and various definitions, how it
+is taught and tested in schools and professionally and how this can be improved.
+
+I was mainly interested in the former parts, what is critical thinking and how to practice/become a
+critical thinker. Haber does well explaining formal and informal logical systems, inductive
+versus deductive reasoning and methods of logical reasoning such as Aristotle's syllogism, modus
+ponens and modus tollens. He also talks about reasoning flaws; explaining a few common fallacies
+such as association fallacy (_you're friend's friend is a thief, so you are a thief_) and ad
+hominems (_attacking the arguer instead of the arguments itself_).
+
+## Ender's Game
+
+![ender-game-cover][ender-game-cover]
+
+Thinking about this book, brings the following quotes about war to mind:
+
+> War is a force that gives us meaning
+>
+> ~ Chris Hedges
+
+> War is peace. 
+> Freedom is slavery. 
+> Ignorance is strength.
+>
+> ~ George Orwell
+
+Ender, a bright child is selected and trained to be humans' ultimate commander in the bugger wars,
+and he succeeds at it. But, does the end justify the means? He's robbed of his innocence and
+childhood. The adults hide the consequences of his actions from him; when he kills billions of
+buggers, it is another simulation game for him.
+
+This book has given me mixed feelings. On one hand to shows how our thinking can be hijacked by
+fear and war; so many rules broken just to wipe out the buggers. And the irony, in the end, that
+the buggers never planned to attack again. I guess their fate was sealed when they attacked first.
+Another irony is as the bugger war ends, another one erupts on earth. 
+
+On the other side, it's a story of how much sheer dedication and sacrifice can achieve. Ender
+pushed the envelope and set new records in battle school. I wonder if there's a thing to be said
+about such strict coaching/manipulation in real life. How far can you excel if you really set
+yourself and your environment to it?
+
+A very captivating read nonetheless, especially when you pair the written work with it's audio book.
+
+
+
+[goodread-challenge]: https://www.goodreads.com/user_challenges/19529437
 [dune-cover]: /images/dune-cover.jpg
 [1984-cover]: /images/1984-cover.jpg
+[ender-game-cover]: /images/ender-game-cover.jpg
 [stories-of-our-lives]: /images/stories-of-our-lives.jpg
+[critical-thinking-cover]: /images/critical-thinking-cover.jpg
