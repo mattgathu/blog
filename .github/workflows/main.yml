@@ -16,7 +16,7 @@ jobs:
         with:
           path: target
           key: cargo-build-${{ hashFiles('**/Cargo.lock') }}
-          restore-key: cargo-build-
+          restore-keys: cargo-build-
       - name: Build Blog
         run: cargo run
       - name: Deploy to GitHub Pages
