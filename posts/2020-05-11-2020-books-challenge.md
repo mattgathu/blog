@@ -18,6 +18,7 @@ This is my attempt at summarizing my reading.
 3. [Stories of our Lives - The Nest Collective](#stories-of-our-lives)
 4. [Critical Thinking - Jonathan Haber](#critical-thinking)
 5. [Ender's Game - Orson Scott Card](#enders-game)
+6. [Le Petit Prince - Antoine de Saint-Exupéry](#le-petit-prince)
 
 
 ## Dune
@@ -125,6 +126,19 @@ yourself and your environment to it?
 
 A very captivating read nonetheless, especially when you pair the written work with it's audio book.
 
+## Le Petit Prince
+
+![petit-prince-cover][petit-prince-cover]
+
+Ce livre a été mon premier livre en français que j'ai lu entièrement. L'histoire est très
+intéressante, comment les gens sont trop matérialiste et ils voient le monde avec cette
+mentalité. Le businessman et le roi sont vraiment comme ça.
+
+Nous n'apprécions pas les petites choses de la vie, comme avoir de vrai amis. Nous voulons
+tout acheter, meme les amitiés. Le petit prince appréciait sa relation avec sa fleur après avoir
+apprivoisé le rennard et l'homme dans la désert.
+
+Pour moi, ça etait la morale de l'histoire.
 
 
 [goodread-challenge]: https://www.goodreads.com/user_challenges/19529437
@@ -133,3 +147,4 @@ A very captivating read nonetheless, especially when you pair the written work w
 [ender-game-cover]: /images/ender-game-cover.jpg
 [stories-of-our-lives]: /images/stories-of-our-lives.jpg
 [critical-thinking-cover]: /images/critical-thinking-cover.jpg
+[petit-prince-cover]: /images/petit-prince-cover.jpg
