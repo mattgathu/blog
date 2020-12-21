@@ -1,5 +1,5 @@
 use crate::blogs::Manifest;
-use comrak::ComrakOptions;
+use comrak::{ComrakExtensionOptions, ComrakOptions, ComrakRenderOptions};
 use regex::Regex;
 use serde_derive::{Deserialize, Serialize};
 use std::error::Error;
@@ -64,8 +64,18 @@ impl Post {
         } = serde_yaml::from_str(yaml)?;
         // next, the contents. we add + to get rid of the final "---\n\n"
         let options = ComrakOptions {
-            ext_header_ids: Some(String::new()),
-            unsafe_: true, // Allow rendering of raw HTML
+            extension: comrak::ComrakExtensionOptions {
+                header_ids: Some(String::new()),
+                table: true,
+                ..ComrakExtensionOptions::default()
+            },
+            render: ComrakRenderOptions {
+                unsafe_: true,
+
+                ..ComrakRenderOptions::default()
+            },
+            //ext_header_ids: Some(String::new()),
+            //unsafe_: true, // Allow rendering of raw HTML
             ..ComrakOptions::default()
         };
 
