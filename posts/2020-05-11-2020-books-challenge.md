@@ -19,6 +19,7 @@ This is my attempt at summarizing my reading.
 4. [Critical Thinking - Jonathan Haber](#critical-thinking)
 5. [Ender's Game - Orson Scott Card](#enders-game)
 6. [Le Petit Prince - Antoine de Saint-Exupéry](#le-petit-prince)
+7. [Drunk - Jackson Biko](#drunk)
 
 
 ## Dune
@@ -140,6 +141,19 @@ apprivoisé le rennard et l'homme dans la désert.
 
 Pour moi, ça etait la morale de l'histoire.
 
+## Drunk
+
+![drunk-cover][drunk-cover]
+
+A contemporary Kenyan writing rooted in the current Nairobi zeitgeist.
+
+I was first appalled by language and style Biko uses but I quickly adapted to it, I guess it was
+just strange at first. The very short chapters, asides, first person narration intertwined with
+third person narration stopped being annoyances and somewhat shaped the story.
+
+It is a quick read, one that felt like an extended short story. It now reminds me of the **Digital
+Bedbugs**
+
 
 [goodread-challenge]: https://www.goodreads.com/user_challenges/19529437
 [dune-cover]: /images/dune-cover.jpg
@@ -148,3 +162,4 @@ Pour moi, ça etait la morale de l'histoire.
 [stories-of-our-lives]: /images/stories-of-our-lives.jpg
 [critical-thinking-cover]: /images/critical-thinking-cover.jpg
 [petit-prince-cover]: /images/petit-prince-cover.jpg
+[drunk-cover]: /images/drunk-cover.jpg
