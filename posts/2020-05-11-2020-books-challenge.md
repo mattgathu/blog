@@ -20,6 +20,7 @@ This is my attempt at summarizing my reading.
 5. [Ender's Game - Orson Scott Card](#enders-game)
 6. [Le Petit Prince - Antoine de Saint-Exupéry](#le-petit-prince)
 7. [Drunk - Jackson Biko](#drunk)
+8. [Thursdays - Jackson Biko](#thursdays)
 
 
 ## Dune
@@ -154,6 +155,20 @@ third person narration stopped being annoyances and somewhat shaped the story.
 It is a quick read, one that felt like an extended short story. It now reminds me of the **Digital
 Bedbugs**
 
+## Thursdays
+
+![thursdays-cover][thursdays-cover]
+
+My second Biko's reading was lacklustre and left me desiring more from it.
+
+Thursdays starts off and maintains an ensemble storytelling, emphasizing the stories of all
+the bandmates as a whole without picking a single member as the main character.
+
+It builds up conflicts in each of their stories but stumbles and falls flat when resolving
+these conflicts. It unexpectedly dwells on one member's story that overshadows the rest, shockingly 
+affording only a few lines to some of them.
+
+What begins as a balanced collective narrative ends up on a narrow singular ending.
 
 [goodread-challenge]: https://www.goodreads.com/user_challenges/19529437
 [dune-cover]: /images/dune-cover.jpg
@@ -163,3 +178,4 @@ Bedbugs**
 [critical-thinking-cover]: /images/critical-thinking-cover.jpg
 [petit-prince-cover]: /images/petit-prince-cover.jpg
 [drunk-cover]: /images/drunk-cover.jpg
+[thursdays-cover]: /images/thursdays-cover.jpg
