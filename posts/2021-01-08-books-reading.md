@@ -57,7 +57,7 @@ of interpretations. I made [notes][notes-on-gmmv1] of nuggets I picked up.
 
 
 [naval-almanack-cover]: /images/naval-almanack-cover.jpg
-[notes-on-naval-almanack]: /2021/01/08/2021-notes-naval-almanack.html
+[notes-on-naval-almanack]: /2021/01/08/notes-naval-almanack.html
 [zikora-cover]: /images/zikora-cover.jpg
 [gmmv1-cover]: /images/great-mental-models-vol1-cover.jpg
 [notes-on-gmmv1]: /2021/01/13/notes-gmmv1.html
