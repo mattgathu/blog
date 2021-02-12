@@ -18,6 +18,7 @@ author: Matt
 5. [Tuesdays with Morrie - Mitch Albom](#tuesdays-with-morrie)
 6. [Money - Yuval Noah Harari](#money)
 7. [Like a Mule Bringing Ice Cream to the Sun - Sarah Ladipo Manyika](#like-a-mule-bringing-ice-cream-to-the-sun)
+8. [Weight of Whispers - Yvonne Adhiambo Owuor](#weight-of-whispers)
 
 
 ## The Almanack of Naval Ravikant
@@ -113,6 +114,18 @@ she did not seem lacking in some aspect. Well, having kids maybe.
 And yes her growing old does come with challenges but reflecting on a life well lived 
 gives value to the moment.
 
+## Weight of Whispers
+
+![weight-of-whispers-cover][weight-of-whispers-cover]
+
+Quite a story this one is! I struggled reading through during my first reading session and had to
+pause and gather myself before resuming the next day; that's how difficult the story is.
+
+Written in a few pages on a small book is a big story, a story of war, a story of family, of
+friends..and a story of how the ground shifts beneath us and we are left on shaky foundations.
+The music of our lives stops, and we are left half-stepping through it, not
+understanding the new rhythm of our existence.
+
 [naval-almanack-cover]: /images/naval-almanack-cover.jpg
 [notes-on-naval-almanack]: /2021/01/08/notes-naval-almanack.html
 [zikora-cover]: /images/zikora-cover.jpg
@@ -124,3 +137,4 @@ gives value to the moment.
 [like-a-mule-cover]: /images/like-a-mule-cover.jpg
 [credit-wiki]: https://en.wikipedia.org/wiki/Credit
 [useless-class]: https://www.theguardian.com/technology/2017/may/08/virtual-reality-religion-robots-sapiens-book
+[weight-of-whispers-cover]: /images/weight-of-whispers-cover.jpg
