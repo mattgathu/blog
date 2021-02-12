@@ -132,15 +132,15 @@ A very captivating read nonetheless, especially when you pair the written work w
 
 ![petit-prince-cover][petit-prince-cover]
 
-Ce livre a été mon premier livre en français que j'ai lu entièrement. L'histoire est très
-intéressante, comment les gens sont trop matérialiste et ils voient le monde avec cette
+Ce livre a été mon livre premier  en français que j'ai lu entièrement. L'histoire est très
+intéressante, comment les gens sont matérialistes et ils voient le monde avec cette
 mentalité. Le businessman et le roi sont vraiment comme ça.
 
-Nous n'apprécions pas les petites choses de la vie, comme avoir de vrai amis. Nous voulons
+Nous n'apprécions pas les petites choses de la vie, comme avoir de vrais amis. Nous voulons
 tout acheter, meme les amitiés. Le petit prince appréciait sa relation avec sa fleur après avoir
-apprivoisé le rennard et l'homme dans la désert.
+apprivoisé le renard et l'homme dans le désert.
 
-Pour moi, ça etait la morale de l'histoire.
+Pour moi, ç'était la morale de l'histoire.
 
 ## Drunk
 
