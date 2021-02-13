@@ -18,7 +18,8 @@ author: Matt
 5. [Tuesdays with Morrie - Mitch Albom](#tuesdays-with-morrie)
 6. [Money - Yuval Noah Harari](#money)
 7. [Like a Mule Bringing Ice Cream to the Sun - Sarah Ladipo Manyika](#like-a-mule-bringing-ice-cream-to-the-sun)
-8. [Weight of Whispers - Yvonne Adhiambo Owuor](#weight-of-whispers)
+8. [Seven Brief Lessons on Physics - Carlo Rovelli](#seven-brief-lessons-on-physics)
+9. [Weight of Whispers - Yvonne Adhiambo Owuor](#weight-of-whispers)
 
 
 ## The Almanack of Naval Ravikant
@@ -114,6 +115,19 @@ she did not seem lacking in some aspect. Well, having kids maybe.
 And yes her growing old does come with challenges but reflecting on a life well lived 
 gives value to the moment.
 
+## Seven Brief Lessons on Physics
+
+![seven-brief-lessons-cover][seven-brief-lessons-cover]
+
+A great collection on great meaningful physics lessons for the general reader.
+
+I liked the how Rovelli presents deep and difficult physics theories and discoveries in 
+a concise, easy to grasp manner. It helped me appreciate great contributions in Physics and their
+implications and the existing struggle to re-unify general relativity with quantum physics.
+
+I will definitely be re-reading this regularly, it provides a good basis for discussions on Physics
+and the world around us.
+
 ## Weight of Whispers
 
 ![weight-of-whispers-cover][weight-of-whispers-cover]
@@ -137,4 +151,5 @@ understanding the new rhythm of our existence.
 [like-a-mule-cover]: /images/like-a-mule-cover.jpg
 [credit-wiki]: https://en.wikipedia.org/wiki/Credit
 [useless-class]: https://www.theguardian.com/technology/2017/may/08/virtual-reality-religion-robots-sapiens-book
+[seven-brief-lessons-cover]: /images/seven-brief-lessons-cover.jpg
 [weight-of-whispers-cover]: /images/weight-of-whispers-cover.jpg
