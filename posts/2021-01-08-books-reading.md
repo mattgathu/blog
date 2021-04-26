@@ -20,6 +20,7 @@ author: Matt
 7. [Like a Mule Bringing Ice Cream to the Sun - Sarah Ladipo Manyika](#like-a-mule-bringing-ice-cream-to-the-sun)
 8. [Seven Brief Lessons on Physics - Carlo Rovelli](#seven-brief-lessons-on-physics)
 9. [Weight of Whispers - Yvonne Adhiambo Owuor](#weight-of-whispers)
+10. [Why I Am so Clever - Friedrich Nietzsche](#why-i-am-so-clever)
 
 
 ## The Almanack of Naval Ravikant
@@ -140,6 +141,47 @@ friends..and a story of how the ground shifts beneath us and we are left on shak
 The music of our lives stops, and we are left half-stepping through it, not
 understanding the new rhythm of our existence.
 
+## Why I Am so Clever
+
+![why-i-am-so-clever-cover][why-i-am-so-clever-cover]
+
+A collection of three "essays" by Nietzsche.
+
+I struggled through Nietzsche's writing, especially his pompous style and sense of self-importance.
+
+I however watched [a Jordan Peterson's interview][jp-interview] and it all started to make sense to
+me. I started to understand why Nietzsche was fascinated with "mundane" things as food, place and
+climate. I reviewed my relation with food as an example and realized how a long time and paid no
+detail to it but that changed over the last year as I tried to be lean. I reflected on the effects
+of alcohol, good and bad. It all slowly started to make sense.
+I'm writing this in Nanyuki, a rather cold place at night and in the mornings. I noticed how this
+weather has changed my routine, I no longer have early mornings nor late nights. It's too cold for
+that.
+
+Nietzsche has other profound (_simple_) ideas which he doesn't dwell a lot upon but which I found
+useful. Notably is **amor fati**. It reminds me of selflessness, meditation and the acceptance that
+comes with it. Of not trying to change everything around you but of accepting and being at peace
+with it.
+
+On that note, I realized I probably will never fully fathom Nietzsche and his philosophy but that's
+amor fati in a way.
+
+> I take flight almost always to the same books, really a small number, those books which have _proved_ themselves precisely to me.
+
+> In all this - in selection of nutriment, of place and climate, of recreation - there commands an
+> instinct of self preservation which manifests itself most unambiguously as an instinct for
+> self-defense.
+
+> these little things - nutriment, place, climate, recreation, the whole casuistry of selfishness -
+> are beyond all conception of greater importance than anything that has been considered of
+> importance hitherto.
+
+> I know of no other way of dealing with great tasks than that of play: this is, as a sign of
+> greatness, an essential precondition.
+
+> My formula for greatness in a human being is amor fati: that one wants nothing to be other than
+> it is, not in the future, not in the past, not in all eternity.
+
 [naval-almanack-cover]: /images/naval-almanack-cover.jpg
 [notes-on-naval-almanack]: /2021/01/08/notes-naval-almanack.html
 [zikora-cover]: /images/zikora-cover.jpg
@@ -153,3 +195,5 @@ understanding the new rhythm of our existence.
 [useless-class]: https://www.theguardian.com/technology/2017/may/08/virtual-reality-religion-robots-sapiens-book
 [seven-brief-lessons-cover]: /images/seven-brief-lessons-cover.jpg
 [weight-of-whispers-cover]: /images/weight-of-whispers-cover.jpg
+[why-i-am-so-clever-cover]: /images/why-i-am-so-clever.jpg
+[jp-interview]: https://www.youtube.com/watch?v=C1sEHNw4UIg
