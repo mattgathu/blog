@@ -21,6 +21,7 @@ author: Matt
 8. [Seven Brief Lessons on Physics - Carlo Rovelli](#seven-brief-lessons-on-physics)
 9. [Weight of Whispers - Yvonne Adhiambo Owuor](#weight-of-whispers)
 10. [Why I Am so Clever - Friedrich Nietzsche](#why-i-am-so-clever)
+10. [Range - David Epstein](#range)
 
 
 ## The Almanack of Naval Ravikant
@@ -182,6 +183,21 @@ amor fati in a way.
 > My formula for greatness in a human being is amor fati: that one wants nothing to be other than
 > it is, not in the future, not in the past, not in all eternity.
 
+## Range
+
+![range-cover][range-cover]
+
+Very eye-opening.
+
+Range felt like an exercise in exposing my own narrow mindedness, myopic views on things and an
+unfounded clinging to one set of tools.
+
+David Epstein's argument on expanding one's horizons by embracing variation and range is backed
+with numerous real world evidence - anecdotal and scientific.
+
+It made reflect a lot on things I could be doing but that have not paid attention to.
+I made [notes][notes-on-range].
+
 [naval-almanack-cover]: /images/naval-almanack-cover.jpg
 [notes-on-naval-almanack]: /2021/01/08/notes-naval-almanack.html
 [zikora-cover]: /images/zikora-cover.jpg
@@ -197,3 +213,5 @@ amor fati in a way.
 [weight-of-whispers-cover]: /images/weight-of-whispers-cover.jpg
 [why-i-am-so-clever-cover]: /images/why-i-am-so-clever.jpg
 [jp-interview]: https://www.youtube.com/watch?v=C1sEHNw4UIg
+[range-cover]: /images/range-cover.jpg
+[notes-on-range]: /2021/05/23/notes-range.html
