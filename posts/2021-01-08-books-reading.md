@@ -21,7 +21,8 @@ author: Matt
 8. [Seven Brief Lessons on Physics - Carlo Rovelli](#seven-brief-lessons-on-physics)
 9. [Weight of Whispers - Yvonne Adhiambo Owuor](#weight-of-whispers)
 10. [Why I Am so Clever - Friedrich Nietzsche](#why-i-am-so-clever)
-10. [Range - David Epstein](#range)
+11. [Range - David Epstein](#range)
+12. [The Hairdresser of Harare - Tendai Huchu](#the-hairdresser-of-harare)
 
 
 ## The Almanack of Naval Ravikant
@@ -198,6 +199,19 @@ with numerous real world evidence - anecdotal and scientific.
 It made reflect a lot on things I could be doing but that have not paid attention to.
 I made [notes][notes-on-range].
 
+## The Hairdresser of Harare
+
+![hairdresser-harare-cover][hairdresser-harare-cover]
+
+Another contemporary piece of African writing. It felt like reading about my own life experiences minus the
+violence. I felt connected to the characters in the book, admired and sympathized with them
+through out their stories. This book made me realize how similar Harare was to Nairobi, and how
+similar we are as people.
+
+The author subtly brings to light the struggle of being queer in an African setting; the rejection
+by your own, violence and fear - it reminded me of [Stories of our lives][stories-of-our-lives]. 
+
+
 [naval-almanack-cover]: /images/naval-almanack-cover.jpg
 [notes-on-naval-almanack]: /2021/01/08/notes-naval-almanack.html
 [zikora-cover]: /images/zikora-cover.jpg
@@ -215,3 +229,5 @@ I made [notes][notes-on-range].
 [jp-interview]: https://www.youtube.com/watch?v=C1sEHNw4UIg
 [range-cover]: /images/range-cover.jpg
 [notes-on-range]: /2021/05/23/notes-range.html
+[hairdresser-harare-cover]: /images/hairdresser-harare-cover.jpg
+[stories-of-our-lives]: /2020/05/11/2020-books-challenge.html#stories-of-our-lives
