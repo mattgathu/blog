@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Rust 2020 Reading Journal | Matt Gathu</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Matt Gathu's Blog">
+
+     <!-- Twitter card -->
+ <meta name="twitter:card" content="summary">
+ <meta name="twitter:site" content="@swissgathu">
+ <meta name="twitter:creator" content="@swissgathu">
+ <meta name="twitter:title" content="Rust 2020 Reading Journal | Matt Gathu">
+ <meta name="twitter:description" content="matt gathu blog">
+
+
+<!-- fonts -->
+
+
+<!-- styles -->
+<link rel="stylesheet" href="/styles/vendor.css"/>
+<link rel="stylesheet" href="/styles/fonts.css"/>
+<link rel="stylesheet" href="/styles/app.css"/>
+<link rel="stylesheet" href="/styles/highlight.css"/>
+
+<!-- favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="manifest" href="/images/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#00aba9">
+<meta name="theme-color" content="#ffffff">
+
+ <!-- atom -->
+ <link type="application/atom+xml" rel="alternate" href="https://mattgathu.github.io/feed.xml" title="Matt Gathu" />
+
+  </head>
+  <body>
+<section id="Rust 2020 Reading Journal" class="white">
+  <div class="w-100 mw-none ph3 mw8-m mw8-l center f3">
+    <header>
+      <h2>Rust 2020 Reading Journal</h2>
+      
+    </header>
+
+    <div class="publish-date-author">Apr. 28, 2020 &middot; Matt
+    </div>
+
+    <div class="post">
+      <ol>
+<li><a href="#apr-27-2020">Apr-27-2020 - Rust Analyzer: First Release</a></li>
+<li><a href="#apr-30-2020">Apr-30-2020 - Rust + nix = easier unix systems programming</a></li>
+<li><a href="#may-22-2020">May-22-2020 - Rust: Dropping heavy things in another thread can make your code 10000 times faster</a></li>
+<li><a href="#jun-27-2020">Jun-27-2020 - Examining ARM vs X86 Memory Models with Rust</a></li>
+</ol>
+<h2><a href="#apr-27-2020" aria-hidden="true" class="anchor" id="apr-27-2020"></a>Apr-27-2020</h2>
+<p><strong>Title:</strong> <a href="https://rust-analyzer.github.io/blog/2020/04/20/first-release.html">Rust Analyzer: First Release</a></p>
+<p><a href="https://github.com/rust-analyzer/rust-analyzer">Rust Analyzer</a> is a IDE backend for rust that is implemented as a compiler frontend. It implements the
+<a href="https://microsoft.github.io/language-server-protocol/">language server protocol</a> and adopts lazy and incremental compilation features of rustc.</p>
+<p>It's now providing a better experience than <a href="https://github.com/rust-lang/rls">RLS</a> and wants to replace it as the official language server protocol
+implementation for Rust.</p>
+<p>It has dedicated plugins for <a href="https://github.com/fannheyward/coc-rust-analyzer">Vim</a>, EMACS and VS Code. VS Code is the first class citizen here.</p>
+<p>The bad</p>
+<ul>
+<li>Doesn't use rustc directly. <em>limited error detection</em></li>
+<li>No cache persistence on disk.</li>
+<li>Everything is in-memory.</li>
+</ul>
+<h2><a href="#apr-30-2020" aria-hidden="true" class="anchor" id="apr-30-2020"></a>Apr-30-2020</h2>
+<p><strong>Title:</strong> <a href="http://kamalmarhubi.com/blog/2016/04/13/rust-nix-easier-unix-systems-programming-3/">Rust + nix = easier unix systems programming</a></p>
+<p>I stumbled on this when searching for <a href="https://nixos.org">nix</a> on Hacker News. It is actually
+talking about another <a href="https://github.com/nix-rust/nix/">nix</a> - a rust library that aims to provide a unified
+interface for *nix platform APIs (Linux, BSD etc).</p>
+<p>I like this qoute about systems programming:</p>
+<blockquote>
+<p>Systems programming is programming where you spend more time reading man pages than reading the internet.</p>
+</blockquote>
+<p>Using a C program that use the <code>kill</code> and <code>fork</code> system calls together, Kamal explains how things
+can get pretty bad due to C's return codes being conflated by <code>kill</code> and <code>fork</code>.</p>
+<blockquote>
+<p>Putting the two together, that program could really ruin our day. If the fork() call fails for
+some reason, we store -1 in child. Later, we call kill(-1, SIGKILL), which tries to kill all our
+processes, and most likely hose our login. Not even screen or tmux will save us!</p>
+</blockquote>
+<p>Enter nix, and rust.</p>
+<p>Nix uses Rust enums to model the result of calling <code>fork</code>. See <a href="https://github.com/nix-rust/nix/blob/5c8cdd005270557ceb91cdafc1eca7c971ee9219/src/unistd.rs#L162-L165">this</a>.</p>
+<p>This allows for pattern matching to deal with each case and prevent any conflation.</p>
+<p>Also rust's <code>Result</code> type comes in handy for dealing with operations that might fail.</p>
+<p><em>Fun fact: Kamal was one of my mentors during <a href="https://blog.rust-lang.org/2017/06/27/Increasing-Rusts-Reach.html">Rust Reach</a></em></p>
+<h2><a href="#may-22-2020" aria-hidden="true" class="anchor" id="may-22-2020"></a>May-22-2020</h2>
+<p><strong>Title:</strong> <a href="https://abramov.io/rust-dropping-things-in-another-thread">Rust: Dropping heavy things in another thread can make your code 10000 times faster</a></p>
+<p>An interesting optimization trick of deferring value dropping to a different thread.</p>
+<p>The gist is that:</p>
+<pre><code class="language-rust">fn get_size(a: HeavyThing) -&gt; usize {
+    let size = a.size();
+    std::thread::spawn(move || drop(a));
+    size
+}
+</code></pre>
+<p>is faster than when the drop occurs in the current thread. There is a <a href="https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=e6036d23879b0d0abda5196dfa8a131e">gist</a> that measures the performance
+improvements. It's interesting that the overhead of spawning a thread is low enough to allow for this to work, wow!</p>
+<p>I would say always prefer passing by reference to passing by value.</p>
+<h2><a href="#jun-27-2020" aria-hidden="true" class="anchor" id="jun-27-2020"></a>Jun-27-2020</h2>
+<p><strong>Title:</strong> <a href="https://www.nickwilcox.com/blog/arm_vs_x86_memory_model/">Examining ARM vs X86 Memory Models with Rust</a></p>
+<blockquote>
+<p>The way loads and stores to memory interact between multiple threads on a specific CPU is called that architecture’s Memory Model.</p>
+</blockquote>
+<p>The memory model determines the order by which multiple writes by one thread become visible to other threads. And this is also true for a thread doing multiple reads. <em>This out of order execution is done to maximize memory operations throughput</em>.</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Nb2tebYAaOA?start=404" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p><em>Jim Keller explaining out-of-order execution</em>.</p>
+<p>Memory operations re-ordering by CPU affects the execution of multi-threaded code.</p>
+<pre><code class="language-rust">pub unsafe fn writer(u32_ptr_1: *mut u32, u32_ptr_2: *mut u32) {
+    u32_ptr_1.write_volatile(58);
+    u32_ptr_2.write_volatile(42);
+}
+
+pub unsafe fn reader(u32_ptr_1: *mut u32, u32_ptr_2: *mut u32) -&gt; (u32, u32) {
+    (u32_ptr_1.read_volatile(), u32_ptr_2.read_volatile())
+}
+</code></pre>
+<blockquote>
+<p>If we initialize the contents of both pointers to 0, and then run each function in a different thread, we can list the possible outcomes for the reader. We know that there is no synchronization, but based on our experience with single threaded code we think the possible return values are (0, 0), (58, 0) or (58, 42). But the possibility of hardware reordering of memory writes affecting multi-threads means that there is a fourth option (0, 42).</p>
+</blockquote>
+<p>This issue is easily fixed using <a href="https://doc.rust-lang.org/nightly/std/sync/atomic/index.html">Atomic types</a> which present operations that synchronize updates between threads. <a href="https://doc.rust-lang.org/nightly/std/sync/atomic/enum.Ordering.html">Atomic memory orderings</a> can further be used to specify the way atomic operations synchronize memory.</p>
+<pre><code class="language-rust">pub enum Ordering {
+    Relaxed,
+    Release,
+    Acquire,
+    AcqRel,
+    SeqCst,
+}
+</code></pre>
+<p>There is risk that Rust code might produce different (in an execution sense) assembly code on different CPUs.</p>
+<blockquote>
+<p>The mapping between the theoretical Rust memory model and the X86 memory model is more forgiving to programmer error. It’s possible for us to write code that is wrong with respect to the abstract memory model, but still have it produce the correct assembly code and work correctly on some CPU’s.</p>
+</blockquote>
+<blockquote>
+<p>Where the memory model of ARM differs from X86 is that ARM CPU’s will re-order writes relative to other writes, whereas X86 will not.</p>
+</blockquote>
+<p>To ensure correctness, it's crucial to use the correct memory ordering in the Rust code.</p>
+<blockquote>
+<p>Using the atomic module still requires care when working across multiple CPU’s. As we saw from looking at the X86 vs ARM assembly outputs, if we replace Ordering::Release with Ordering::Relaxed on our store we’d be back to a version that worked correctly on x86 but failed on ARM. It’s especially required working with AtomicPtr to avoid undefined behavior when eventually accessing the value pointed at.</p>
+</blockquote>
+
+    </div>
+  </div>
+</section>
+
+    <footer>
+  <div class="w-100 mw-none ph3 mw8-m mw9-l center f3">
+    <div style="width: 50%; margin: 0 auto;">
+        <a href="https://github.com/mattgathu" target="_blank" rel="noopener" alt="github link"><img src="/images/GitHub-Mark-64px.png" alt="github logo" title="GitHub"/></a>
+        <a href="https://twitter.com/swissgathu" target="_blank" rel="noopener" alt="twitter link"><img src="/images/twitter.svg" alt="twitter logo" title="Twitter"/></a>
+    </div>
+  </div>
+</footer>
+<!-- scripts -->
+<script src="/scripts/highlight.js"></script>
+
+  </body>
+</html>
