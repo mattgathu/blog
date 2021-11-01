@@ -23,6 +23,7 @@ author: Matt
 10. [Why I Am so Clever - Friedrich Nietzsche](#why-i-am-so-clever)
 11. [Range - David Epstein](#range)
 12. [The Hairdresser of Harare - Tendai Huchu](#the-hairdresser-of-harare)
+13. [Atomic Habits - James Clean](#atomic-habits)
 
 
 ## The Almanack of Naval Ravikant
@@ -211,6 +212,30 @@ similar we are as people.
 The author subtly brings to light the struggle of being queer in an African setting; the rejection
 by your own, violence and fear - it reminded me of [Stories of our lives][stories-of-our-lives]. 
 
+## Atomic Habits
+
+![atomic-habits-cover][atomic-habits-cover]
+
+I reread (again) this gem of a book. I have made a vow to myself to reread this book and
+[Deep Work][deep-work] each year.
+
+It's always profound for me how much effective the little nuggets from Atomic Habits are. I
+have been finding the _Two Minutes Rule_ quite effective of late in getting me to pick up old
+habits that felt as chores. Also changing my environment to improve my effectiveness has been
+another profound nugget.
+
+James Clear's manages to break down habit formation, going through the four-step process
+intricately and using vivid real life experiences to ground them. He then outlines a four laws
+system to adopt and reinforce good habits and at the same time break and overcome bad habits.
+I particularly the summaries at the end of chapters and the cheatsheet that takes shape as one
+proceeds through the book.
+
+It's a very actionable book on human behaviour and it distills away a lot of the scientific 
+background that accompany other books on behaviour, leaving us with actionable insights
+and tools to use to shape our daily lives.
+
+It has changed my life.
+
 
 [naval-almanack-cover]: /images/naval-almanack-cover.jpg
 [notes-on-naval-almanack]: /2021/01/08/notes-naval-almanack.html
@@ -230,4 +255,6 @@ by your own, violence and fear - it reminded me of [Stories of our lives][storie
 [range-cover]: /images/range-cover.jpg
 [notes-on-range]: /2021/05/23/notes-range.html
 [hairdresser-harare-cover]: /images/hairdresser-harare-cover.jpg
+[atomic-habits-cover]: /images/atomic-habits-cover.jpg
+[deep-work]: https://www.calnewport.com/books/deep-work
 [stories-of-our-lives]: /2020/05/11/2020-books-challenge.html#stories-of-our-lives
