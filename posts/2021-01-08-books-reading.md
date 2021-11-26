@@ -23,7 +23,8 @@ author: Matt
 10. [Why I Am so Clever - Friedrich Nietzsche](#why-i-am-so-clever)
 11. [Range - David Epstein](#range)
 12. [The Hairdresser of Harare - Tendai Huchu](#the-hairdresser-of-harare)
-13. [Atomic Habits - James Clean](#atomic-habits)
+13. [Atomic Habits - James Clear](#atomic-habits)
+14. [Deep Work - Cal Newport](#deep-work)
 
 
 ## The Almanack of Naval Ravikant
@@ -236,6 +237,23 @@ and tools to use to shape our daily lives.
 
 It has changed my life.
 
+## Deep Work
+
+![deep-work-cover][deep-work-cover]
+
+I reread the great organizational self-help book.
+
+I honestly struggled through the first half of the book where the author lays down the groundwork
+for why deep work is important. It felt like he was rehashing the same arguments over and over
+again just in differently ways, _I'm convinced, can we move on?_. This section
+could have been way shorter and more effective IMHO.
+
+I found the second half to be very resourceful. There are numerous tips and routines on how to work
+in depth and various strategies to deal with the challenges that arise. Generally great material
+here. The author does however rely heavily on his personal life to exemplify things and it
+requires a bit of imagination to see how this can fit in your own life, especially when you're not
+an academic.
+
 
 [naval-almanack-cover]: /images/naval-almanack-cover.jpg
 [notes-on-naval-almanack]: /2021/01/08/notes-naval-almanack.html
@@ -258,3 +276,4 @@ It has changed my life.
 [atomic-habits-cover]: /images/atomic-habits-cover.jpg
 [deep-work]: https://www.calnewport.com/books/deep-work
 [stories-of-our-lives]: /2020/05/11/2020-books-challenge.html#stories-of-our-lives
+[deep-work-cover]: /images/deep-work-cover.jpg
