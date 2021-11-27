@@ -25,6 +25,8 @@ author: Matt
 12. [The Hairdresser of Harare - Tendai Huchu](#the-hairdresser-of-harare)
 13. [Atomic Habits - James Clear](#atomic-habits)
 14. [Deep Work - Cal Newport](#deep-work)
+15. [Spaceflight - Michael J. Neufeld](#spaceflight)
+16. [Astrophysics for People in a Hurry - Neil deGrasse Tyson](#astrophysics-for-people-in-a-hurry)
 
 
 ## The Almanack of Naval Ravikant
@@ -254,6 +256,45 @@ here. The author does however rely heavily on his personal life to exemplify thi
 requires a bit of imagination to see how this can fit in your own life, especially when you're not
 an academic.
 
+## Spaceflight
+
+![spaceflight-cover][spaceflight-cover]
+
+A very engaging account of space flight history painting the ~200 or so years of this cultural,
+scientific and engineering endeavour on the canvas that is time. From Jules Verne imagination in
+_Autour de la Lune_, the early soviet rocket enthusiasts, through the world wars that saw the
+acceleration of rocketry as a science, the cold war that ushered the space era and space agencies
+and finally to the current times with commercial exploration of space and scientific exploration of
+deep space.
+
+The author provides a great lineage that helps in understanding how the space industry came to be.
+A major theme that emerges is the role of military in the early growth and it's continued role as a
+space user and innovator. One fascinating thing I learned and got to appreciate from the reading
+this book is that a majority of scientific work in space is actually unmanned and the human space
+programs are but a smaller piece of a bigger pie.
+
+## Astrophysics for People in a Hurry
+
+![afpiah-cover][afpiah-cover]
+
+> after the laws of physics, everything else is opinion.
+
+This is a nonsense deep dive into astrophysics, concrete enough for you to realize how expansive
+and scientific the field is and short enough for you not to be bogged with technicalities aka
+physics.
+
+An all round take on the how the universe came to be, our little blue dot, mysteries such as dark
+matter and dark energy, and even the chemistry that makes up all matter. 
+I watched Neil on a [Joe Rogan episode][neil-on-rogan] where his expanded on the ideas and things
+presented in the book and it provided a lot more context that helped me see the bigger picture of
+astrophysics and especially its applications.
+
+Watching the [Cassini mission documentary][cassini-documentary] after reading this book made the reading even more
+worthwhile.
+
+> People who believe they are ignorant of nothing have neither looked for, nor stumbled upon, the
+> boundary between what is known and unknown in the universe.
+
 
 [naval-almanack-cover]: /images/naval-almanack-cover.jpg
 [notes-on-naval-almanack]: /2021/01/08/notes-naval-almanack.html
@@ -277,3 +318,7 @@ an academic.
 [deep-work]: https://www.calnewport.com/books/deep-work
 [stories-of-our-lives]: /2020/05/11/2020-books-challenge.html#stories-of-our-lives
 [deep-work-cover]: /images/deep-work-cover.jpg
+[spaceflight-cover]: /images/spaceflight-cover.jpg
+[afpiah-cover]: /images/afpiah-cover.jpg
+[cassini-documentary]: https://www.youtube.com/watch?v=SY-hQJ5pMd4
+[neil-on-rogan]: https://www.youtube.com/watch?v=vGc4mg5pul4
