@@ -45,6 +45,8 @@ Goals to improve my technical competence and overall knowledge.
     - 12 entries
 * reading
     - 30 books
+* tech
+    - take [fast.ai course][dl-course]
 
 ### Relationships
 
@@ -64,3 +66,4 @@ Goals to improve my technical competence and overall knowledge.
 [gr20]: https://en.wikipedia.org/wiki/GR_20
 [yoga-medi]: https://www.bookyogaretreats.com/acolyte/4-day-holistic-yoga-and-meditation-retreat-in-nouvelle-aquitaine
 [side-projects]: /2020/06/06/the-golden-list.html
+[dl-course]: https://course.fast.ai
