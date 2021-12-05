@@ -27,6 +27,7 @@ author: Matt
 14. [Deep Work - Cal Newport](#deep-work)
 15. [Spaceflight - Michael J. Neufeld](#spaceflight)
 16. [Astrophysics for People in a Hurry - Neil deGrasse Tyson](#astrophysics-for-people-in-a-hurry)
+17. [The Granta Book of the African Short Story](#the-granta-book-of-the-african-short-story)
 
 
 ## The Almanack of Naval Ravikant
@@ -295,6 +296,22 @@ worthwhile.
 > People who believe they are ignorant of nothing have neither looked for, nor stumbled upon, the
 > boundary between what is known and unknown in the universe.
 
+## The Granta Book of the African Short Story
+
+![granta-book-cover][granta-book-cover]
+
+What an anthology!
+
+Hands down this is the best collection of African stories that I have read, up there with
+[Encounters from Africa][encounters-from-africa].
+
+This gem is packed with stories from all over Africa, providing great breath and depth in the
+stories told and making you realize how much diversity lives on the continent. From the northern
+Arab speaking Maghreb, the French Sahel, to East Africa and down to southern Africa; there are
+stories from everywhere.
+
+Each story is worth a thousand word but I must say, Faeries of the Nile by Mansoura Ez-Eldin stuck
+with me long after I had read it. I can't really articulate why but it struck a chord with me.
 
 [naval-almanack-cover]: /images/naval-almanack-cover.jpg
 [notes-on-naval-almanack]: /2021/01/08/notes-naval-almanack.html
@@ -322,3 +339,5 @@ worthwhile.
 [afpiah-cover]: /images/afpiah-cover.jpg
 [cassini-documentary]: https://www.youtube.com/watch?v=SY-hQJ5pMd4
 [neil-on-rogan]: https://www.youtube.com/watch?v=vGc4mg5pul4
+[granta-book-cover]: /images/granta-book-cover.jpg
+[encounters-from-africa]: https://www.goodreads.com/book/show/13483007-encounters-from-africa---an-anthology-of-short-stories
