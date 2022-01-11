@@ -28,8 +28,8 @@ only and it's not as demanding. The summit is 2145m above sea level and the elev
 _With Nicks at the summit_
 
 The trail is scenic, starting off with thick shrubland the gives way to grassy sections with great
-view points to the lands below the mountain. The grassland gives to a denser forests and eventually
-to mixed montane vegetation in the upper cooler sections that are closer to the summit.
+view points to the lands below the mountain. The grassland gives way to denser forest and eventually
+to mixed montane vegetation in the upper cooler section that is closer to the summit.
 
 ![montane-pic][montane-pic]
 _Montane vegetation on the upper sections_
