@@ -80,11 +80,11 @@ impl<'a> Generator<'a> {
         let css_file = format!("./static/styles/{}.css", filename);
 
         let css = grass::from_path(&scss_file, &grass::Options::default())
-            .expect(&format!("couldn't compile sass: {}", &scss_file));
+            .unwrap_or_else(|_| panic!("couldn't compile sass: {}", &scss_file));
         let mut file =
-            File::create(&css_file).expect(&format!("couldn't make css file: {}", &css_file));
+            File::create(&css_file).unwrap_or_else(|_| panic!("couldn't make css file: {}", &css_file));
         file.write_all(&css.into_bytes())
-            .expect(&format!("couldn't write css file: {}", &css_file));
+            .unwrap_or_else(|_| panic!("couldn't write css file: {}", &css_file));
     }
 
     fn concat_vendor_css(&self, files: Vec<&str>) {
@@ -168,7 +168,7 @@ impl<'a> Generator<'a> {
     }
 
     fn render_releases_feed(&self, blog: &Blog) -> eyre::Result<()> {
-        let posts = blog.posts().iter().cloned().collect::<Vec<_>>();
+        let posts = blog.posts().to_vec();
         let is_released: Vec<&Post> = posts.iter().filter(|post| post.release).collect();
         let releases: Vec<ReleasePost> = is_released
             .iter()
@@ -182,7 +182,7 @@ impl<'a> Generator<'a> {
             })
             .collect();
         let data = Releases {
-            releases: releases,
+            releases,
             feed_updated: chrono::Utc::now().to_rfc3339(),
         };
         fs::write(
