@@ -1,8 +1,7 @@
-use crate::blogs::Manifest;
+use super::blogs::Manifest;
 use comrak::{ComrakExtensionOptions, ComrakOptions, ComrakRenderOptions};
 use regex::Regex;
 use serde_derive::{Deserialize, Serialize};
-use std::error::Error;
 use std::path::{Path, PathBuf};
 
 #[derive(Debug, PartialEq, Deserialize)]
@@ -36,7 +35,7 @@ pub(crate) struct Post {
 }
 
 impl Post {
-    pub(crate) fn open(path: &Path, manifest: &Manifest) -> Result<Self, Box<dyn Error>> {
+    pub(crate) fn open(path: &Path, manifest: &Manifest) -> eyre::Result<Self> {
         // yeah this might blow up, but it won't
         let filename = path.file_name().unwrap().to_str().unwrap();
 

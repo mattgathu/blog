@@ -1,14 +1,12 @@
 mod blogs;
 mod posts;
 
-use crate::blogs::Blog;
-use crate::posts::Post;
+use self::blogs::Blog;
+use self::posts::Post;
 use handlebars::{handlebars_helper, Handlebars};
-use sass_rs::{compile_file, Options};
 use serde_derive::Serialize;
 use serde_json::json;
 use std::convert::AsRef;
-use std::error::Error;
 use std::fs::{self, File};
 use std::io::Write;
 use std::path::{Path, PathBuf};
@@ -50,7 +48,7 @@ impl<'a> Generator<'a> {
     fn new(
         out_directory: impl AsRef<Path>,
         posts_directory: impl AsRef<Path>,
-    ) -> Result<Self, Box<dyn Error>> {
+    ) -> eyre::Result<Self> {
         let mut handlebars = Handlebars::new();
         handlebars.set_strict_mode(true);
         handlebars.register_templates_directory(".hbs", "templates")?;
@@ -58,12 +56,12 @@ impl<'a> Generator<'a> {
 
         Ok(Generator {
             handlebars,
-            blogs: crate::blogs::load(posts_directory.as_ref())?,
+            blogs: self::blogs::load(posts_directory.as_ref())?,
             out_directory: out_directory.as_ref().into(),
         })
     }
 
-    fn render(&self) -> Result<(), Box<dyn Error>> {
+    fn render(&self) -> eyre::Result<()> {
         // make sure our output directory exists
         fs::create_dir_all(&self.out_directory)?;
 
@@ -81,7 +79,7 @@ impl<'a> Generator<'a> {
         let scss_file = format!("./src/styles/{}.scss", filename);
         let css_file = format!("./static/styles/{}.css", filename);
 
-        let css = compile_file(&scss_file, Options::default())
+        let css = grass::from_path(&scss_file, &grass::Options::default())
             .expect(&format!("couldn't compile sass: {}", &scss_file));
         let mut file =
             File::create(&css_file).expect(&format!("couldn't make css file: {}", &css_file));
@@ -99,7 +97,7 @@ impl<'a> Generator<'a> {
         fs::write("./static/styles/vendor.css", &concatted).expect("couldn't write vendor css");
     }
 
-    fn render_blog(&self, blog: &Blog) -> Result<(), Box<dyn Error>> {
+    fn render_blog(&self, blog: &Blog) -> eyre::Result<()> {
         std::fs::create_dir_all(self.out_directory.join(blog.prefix()))?;
 
         self.render_index(blog)?;
@@ -111,7 +109,7 @@ impl<'a> Generator<'a> {
         Ok(())
     }
 
-    fn render_index(&self, blog: &Blog) -> Result<(), Box<dyn Error>> {
+    fn render_index(&self, blog: &Blog) -> eyre::Result<()> {
         let other_blogs: Vec<_> = self
             .blogs
             .iter()
@@ -134,7 +132,7 @@ impl<'a> Generator<'a> {
         Ok(())
     }
 
-    fn render_post(&self, blog: &Blog, post: &Post) -> Result<(), Box<dyn Error>> {
+    fn render_post(&self, blog: &Blog, post: &Post) -> eyre::Result<()> {
         let path = blog
             .prefix()
             .join(format!("{:04}", &post.year))
@@ -157,7 +155,7 @@ impl<'a> Generator<'a> {
         Ok(())
     }
 
-    fn render_feed(&self, blog: &Blog) -> Result<(), Box<dyn Error>> {
+    fn render_feed(&self, blog: &Blog) -> eyre::Result<()> {
         let posts: Vec<_> = blog.posts().iter().take(10).collect();
         let data = json!({
             "blog": blog,
@@ -169,7 +167,7 @@ impl<'a> Generator<'a> {
         Ok(())
     }
 
-    fn render_releases_feed(&self, blog: &Blog) -> Result<(), Box<dyn Error>> {
+    fn render_releases_feed(&self, blog: &Blog) -> eyre::Result<()> {
         let posts = blog.posts().iter().cloned().collect::<Vec<_>>();
         let is_released: Vec<&Post> = posts.iter().filter(|post| post.release).collect();
         let releases: Vec<ReleasePost> = is_released
@@ -194,7 +192,7 @@ impl<'a> Generator<'a> {
         Ok(())
     }
 
-    fn copy_static_files(&self) -> Result<(), Box<dyn Error>> {
+    fn copy_static_files(&self) -> eyre::Result<()> {
         use fs_extra::dir::{self, CopyOptions};
 
         let mut options = CopyOptions::new();
@@ -214,7 +212,7 @@ impl<'a> Generator<'a> {
         name: impl AsRef<Path>,
         template: &str,
         data: serde_json::Value,
-    ) -> Result<(), Box<dyn Error>> {
+    ) -> eyre::Result<()> {
         let out_file = self.out_directory.join(name.as_ref());
         let file = File::create(out_file)?;
         self.handlebars.render_to_write(template, &data, file)?;
@@ -222,7 +220,7 @@ impl<'a> Generator<'a> {
     }
 }
 
-fn main() -> Result<(), Box<dyn Error>> {
+pub fn main() -> eyre::Result<()> {
     let blog = Generator::new("site", "posts")?;
 
     blog.render()?;
