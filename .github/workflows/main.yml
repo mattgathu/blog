@@ -6,24 +6,35 @@ on:
   pull_request:
 
 jobs:
-  ci:
-    name: CI
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Cache cargo
-        uses: actions/cache@v1
+
+      - uses: Swatinem/rust-cache@v2.5.0
+
+      - run: cargo run
+      - run: cp CNAME ./site/
+      - run: touch site/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v1.0.9
         with:
-          path: target
-          key: cargo-build-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: cargo-build-
-      - name: Build Blog
-        run: cargo run
-      - name: Deploy to GitHub Pages
-        run: |
-          cp CNAME ./site/
-          rustc src/deploy.rs -o /tmp/deploy
-          (cd site/ && /tmp/deploy)
-        env:
-          GITHUB_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        if: github.ref == 'refs/heads/master'
+          path: site
+
+  deploy:
+    if: ${{ github.ref == 'refs/heads/master' }}
+
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    runs-on: ubuntu-latest
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v2.0.2
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
