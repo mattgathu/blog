@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Software Engineering 2023 Reading Journal
+title: Software 2023 Reading Journal
 date: Oct 25, 2023
 categories:
   - rust
@@ -19,7 +19,7 @@ tags:
 2. [Oct-26-2023 - Thread per core](#oct-26-2023)
 3. [Oct-27-2023 - Introducing Glommio](#oct-27-2023)
 4. [Nov-01-2023 - Why Async Rust](#nov-01-2023)
-
+5. [Nov-05-2023 -Are You Sure You Want to Use MMAP in Your Database Management System? ](#nov-05-2023)
 ## Oct-25-2023
 
 **Title:** [Compile Times and Code Graphs](https://blog.danhhz.com/compile-times-and-code-graphs)
@@ -121,3 +121,48 @@ trait Future {
 ```
 
 Future combinators require access to the future's state across await points. Pinning via the `Pin` type solved this by guaranteeing that a future won't move in memory and therefore is safe to have internal references.
+
+### Nov-05-2023
+
+**Title:** [Are You Sure You Want to Use MMAP in Your Database Management System?](https://db.cs.cmu.edu/mmap-cidr2022/)
+
+I have been reading up on mmap and came across this paper. It covers correctness and perf issues that using mmap brings and how it's a terrible idea to use it. The paper focuses on DBMSes but I think the issues apply to a broader context.
+
+**What is mmap?**
+>_Memory-mapped_ (MMAP) file I/O is an OS-provided feature that maps the contents of a file on secondary storage into a program’s address space. The program then accesses pages via pointers as if the file resided entirely in memory. The OS transparently loads pages only when the program references them and automatically evicts pages if memory fills up.
+
+In DBMSes it seems like a great substitute for [buffer bools](https://15445.courses.cs.cmu.edu/fall2021/notes/05-bufferpool.pdf); an in-memory cache of pages read from disk.
+
+**What makes mmap attractive?**
+*  OS manages file I/O for the application. App does not deal with low-level page management.
+*  mmap avoids data copying to userspace as application can directly access data in OS page cache. This should be more performant than normal file I/O.
+
+**How mmap works?**
+![mmap-access]( /images/mmap-access.png)
+
+1. A program calls mmap and receives a pointer to the memory-mapped file contents. 
+2. The OS reserves part of the program’s virtual address space but does not load any part of the file. 
+3. The program accesses the file’s contents using the pointer. 
+4. The OS attempts to retrieve the page.
+5. Since no valid mapping exists for the specified virtual address, the OS triggers a page fault to load the referenced part of the file from secondary storage into a physical memory page. 
+6. The OS adds an entry to the page table that maps the virtual address to the new physical address. 
+7. The initiating CPU core also caches this entry in its local translation lookaside buffer (TLB) to accelerate future accesses
+
+**Why mmap sucks? 💩**
+- Transaction safety
+	- Since OS performs transparent paging, it can flush dirty pages to disk anytime. This is an issue for apps that perform transactions and need to control when updates are committed.
+- I/O stalls
+	- When a page fault occurs, mmap performs blocking I/O to fetch page from disk. mmap does not support async reads.
+- Error Handling
+	- For apps that perform data integrity checks e.g. using checksums, mmap makes it hard due to transparent page loads/evictions. There's no way to know if a page changed.
+	- mmap I/O errors are more complicated to handle.
+- Perf Issues
+	- page table contention
+	- single-threaded page eviction
+	- TLB shootdowns: occur during page eviction when a cpu core needs to invalidate mappings in a remote TLB. Whereas flushing the local TLB is inexpensive, issuing interprocessor interrupts to synchronize remote TLBs can take thousands of cycles
+ - Other
+	- If the mmap is shared, contention on the mmap write lock leads to poor perf.
+	- mmap is more expensive than read sys call for SSDs.
+	- mmap implementations across platforms are not compatible. windows vs linux vs darwin
+	- Since the OS manages the file mapping,  the in-memory data layout needs to match the physical representation on secondary storage, leading to wasted space and reduced I/O throughput. Notably no compression can be performed for data on disk.
+
