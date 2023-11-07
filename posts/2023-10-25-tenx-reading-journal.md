@@ -19,7 +19,8 @@ tags:
 2. [Oct-26-2023 - Thread per core](#oct-26-2023)
 3. [Oct-27-2023 - Introducing Glommio](#oct-27-2023)
 4. [Nov-01-2023 - Why Async Rust](#nov-01-2023)
-5. [Nov-05-2023 -Are You Sure You Want to Use MMAP in Your Database Management System? ](#nov-05-2023)
+5. [Nov-05-2023 - Are You Sure You Want to Use MMAP in Your Database Management System? ](#nov-05-2023)
+6. [Nov-06-2023 - Log Structured File Systems](#nov-06-2023)
 ## Oct-25-2023
 
 **Title:** [Compile Times and Code Graphs](https://blog.danhhz.com/compile-times-and-code-graphs)
@@ -166,3 +167,59 @@ In DBMSes it seems like a great substitute for [buffer bools](https://15445.cour
 	- mmap implementations across platforms are not compatible. windows vs linux vs darwin
 	- Since the OS manages the file mapping,  the in-memory data layout needs to match the physical representation on secondary storage, leading to wasted space and reduced I/O throughput. Notably no compression can be performed for data on disk.
 
+### Nov-06-2023
+
+**Title:** [Log Structured File Systems](https://pages.cs.wisc.edu/~remzi/OSTEP/file-lfs.pdf)
+
+A chapter in  the [OSTEP book](https://pages.cs.wisc.edu/~remzi/OSTEP/). 
+
+The basic idea of LFS is **all updates are written to disk sequentially to an append only log data structure.** LFS never overwrites existing data, it writes data segments to free locations.
+
+**How is good write perf achieved?**
+
+Using write buffering. The LFS tracks updates in memory and when there's a sufficient number of updates, it will write them sequentially to disk. This provides efficient use of disk bandwidth.
+A good buffer size can be determined using this equation:
+
+**D = (F/1-F) x R<sub>peak</sub> x T<sub>pos</sub>** where:
+
+**D** - buffer size in MB
+**F** - effective rate between 0 and 1 corresponding to desired efficiency; 0.9 => 90%
+**R<sub>peak</sub>** - data transfer peak rate in MB/s
+**T<sub>pos</sub>** - disk seek time to certain position
+
+**How do you track file inodes in  LFS?**
+
+LFS introduces an inode map structured for this. It maps the inode number to a disk address with the most recent version of the inode. LFS stores chunks of the inode map next to the data blocks on the log.  It then uses fixed addresses on disk (checkpoint regions) to store pointers to the latest pieces of the inode map.
+
+**How is a data read from a file?**
+
+The algorithm is simple:
+1. Read checkpoint region
+2. Read entire inode map and cache it memory (for subsequent reads)
+3. Look up the file's inode and get  it's address on disk
+4. Read data block from file.
+
+**Garbage collection**
+
+LFS has to clean old versions of files that have been replaces by newer versions.
+LFS implements a cleaner that reads in a number of old (partially-used) segments, determines which blocks are live within these segments, and then write out a new set of segments with just the live blocks within them, freeing up the old ones for writing.
+
+It uses a segment summary block to store info used to decide whether a data block is live or stale. It basically keeps the inode version of the file in the summary block and check if the inode is still the current one in the inode map. If the inode map returns a different inode then the data block is stale and can be garbage collected.
+
+**When and which blocks to clean?**
+
+The when is simple:
+- periodic
+- during idle time
+- when disk is full
+Which blocks to clean is harder:
+- based on policies / heuristics
+- hot/code segments approach: do not GC hot segments regularly since the keep changing.
+
+**Crash recovery**
+
+How to recover when system crashes as LFS is writing to disk?
+- by carefully writing checkpoint regions
+- uses timestamps in CR's head and tail.
+- detects crashes by checking timestamps
+- recovery starts at last CR and uses the **roll forward** technique
