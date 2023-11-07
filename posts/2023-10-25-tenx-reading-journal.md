@@ -182,10 +182,10 @@ A good buffer size can be determined using this equation:
 
 **D = (F/1-F) x R<sub>peak</sub> x T<sub>pos</sub>** where:
 
-**D** - buffer size in MB
-**F** - effective rate between 0 and 1 corresponding to desired efficiency; 0.9 => 90%
-**R<sub>peak</sub>** - data transfer peak rate in MB/s
-**T<sub>pos</sub>** - disk seek time to certain position
+- **D** - buffer size in MB
+- **F** - effective rate between 0 and 1 corresponding to desired efficiency; 0.9 => 90%
+- **R<sub>peak</sub>** - data transfer peak rate in MB/s
+- **T<sub>pos</sub>** - disk seek time to certain position
 
 **How do you track file inodes in  LFS?**
 
