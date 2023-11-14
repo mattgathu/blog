@@ -21,6 +21,7 @@ tags:
 4. [Nov-01-2023 - Why Async Rust](#nov-01-2023)
 5. [Nov-05-2023 - Are You Sure You Want to Use MMAP in Your Database Management System? ](#nov-05-2023)
 6. [Nov-06-2023 - Log Structured File Systems](#nov-06-2023)
+7. [Nov-14-2023 - Flash Based SSDs](#nov-14-2023)
 ## Oct-25-2023
 
 **Title:** [Compile Times and Code Graphs](https://blog.danhhz.com/compile-times-and-code-graphs)
@@ -223,3 +224,29 @@ How to recover when system crashes as LFS is writing to disk?
 - uses timestamps in CR's head and tail.
 - detects crashes by checking timestamps
 - recovery starts at last CR and uses the **roll forward** technique
+
+
+### Nov-14-2023
+
+Title: [Flash Based SSDs](https://pages.cs.wisc.edu/~remzi/OSTEP/file-ssd.pdf)
+
+Another chapter in  the [OSTEP book](https://pages.cs.wisc.edu/~remzi/OSTEP/).
+
+Flash chips are designed to store one or more bits in a single transistor; the level of charge trapped within the transistor is mapped to a binary value. In a single-level cell (SLC) flash, only a single bit is stored within  a transistor; with a multi-level cell (MLC) flash, two bits are  encoded into different levels of charge.
+
+A flash chip consists of many banks, each of which is organized into  blocks. Each block is subdivided into pages. Blocks are large (128KB–2MB) and contain many pages, which are relatively small (1KB–8KB).
+
+To read from flash, issue a read command with an address and length; this allows a client to read one or more pages. Writing flash is more complex. First, the client must erase the entire block. Then, the client can program each page exactly once, thus completing the write. 
+
+A flash-based solid-state storage device (SSD) behaves as if it were a normal block-based read/write disk; by using a flash translation  layer (FTL), it transforms reads and writes from a client into reads, erases, and programs to underlying flash chips. An in-memory translation layer tracks where logical writes were located within the physical medium.
+
+**Challenges with SSDs:**
+- **wear out**: when a flash block is erased and programmed, it slowly accrues a little bit of extra charge. Over time, as that extra charge builds up, it becomes increasingly difficult to differentiate between a 0 and a 1. At the point where it becomes impossible, the block becomes unusable. Flash reliability is mostly determined by wear out; if a block is erased and programmed too often, it will become unusable. 
+- **disturbance**: When accessing a particular page within a flash, it is possible that some bits get flipped in neighboring pages; such bit flips are known as read disturbs or program disturbs, depending on whether the page is being read or programmed.
+
+Most FTLs are log-structured, which reduces the cost of writing by minimizing erase/program cycles.
+
+**Key issues with log-structured FTLs:**
+-  the cost of garbage collection, which leads to write amplification. The **trim** operation is useful to tell the device when particular blocks are no longer needed.   
+- the size of the mapping table, which can become quite large. Using a hybrid mapping or just caching hot pieces of the FTL are possible remedies. 
+- wear leveling; the FTL must occasionally migrate data from blocks that are mostly read in order to ensure said blocks also receive their share of the erase/program load.

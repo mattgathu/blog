@@ -1,13 +1,18 @@
 ---
 layout: post
-title: "Notes from Dead Aid by Dambisa Moyoo"
+title: Notes from Dead Aid by Dambisa Moyo
 date: July 01,2023
 categories:
-- books
-- reading
-description: "notes from reading Dead Aid by Dambisa Moyo"
+  - books
+  - reading
+description: notes from reading Dead Aid by Dambisa Moyo
 keywords: books, journal, 2023
 author: Matt
+tags:
+  - dambisa
+  - Dead-aid
+  - books
+  - reading
 ---
 
 A list of notes from the [Dead Aid][da] by Dambisa Moyo.
