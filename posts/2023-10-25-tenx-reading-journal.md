@@ -22,6 +22,7 @@ tags:
 5. [Nov-05-2023 - Are You Sure You Want to Use MMAP in Your Database Management System? ](#nov-05-2023)
 6. [Nov-06-2023 - Log Structured File Systems](#nov-06-2023)
 7. [Nov-14-2023 - Flash Based SSDs](#nov-14-2023)
+8. [Nov-15-2023 - The Unwritten Contract of Solid State Drives](#nov-15-2023)
 ## Oct-25-2023
 
 **Title:** [Compile Times and Code Graphs](https://blog.danhhz.com/compile-times-and-code-graphs)
@@ -250,3 +251,28 @@ Most FTLs are log-structured, which reduces the cost of writing by minimizing er
 -  the cost of garbage collection, which leads to write amplification. The **trim** operation is useful to tell the device when particular blocks are no longer needed.   
 - the size of the mapping table, which can become quite large. Using a hybrid mapping or just caching hot pieces of the FTL are possible remedies. 
 - wear leveling; the FTL must occasionally migrate data from blocks that are mostly read in order to ensure said blocks also receive their share of the erase/program load.
+
+
+
+### Nov-15-2023
+
+Title: [The Unwritten Contract of Solid State Drives](https://research.cs.wisc.edu/wind/Publications/nvmw18-he.pdf)
+
+A set of rules that SSD clients should follow to obtain high perf.
+
+1. **Request Scale**.
+
+	Clients should issue large requests or many requests in order to exploit the internal parallelism of SSDs. Log structures techniques naturally exploit this parallelism. OS-driven buffered reads throttles disk IO, direct IO achieves better scaling.
+2. **Locality**
+	
+	Clients should access data by locality in order to reduce translation cache misses in the Flash Translation Layer (FTL). Locality is improved by space reuse.
+3. **Aligned Sequentiality**
+
+	In order to reduce the cost of converting page-level to block-level mappings in FTL, clients should start writing at the aligned beginning of a block boundary and write sequentially.
+4. **Grouping by Death Time**
+
+	Writes should be grouped by their likely time of death in order to reduce the cost of garbage collection. If an entire block is dead, the GC only erases the block and doesn't have to rewrite data elsewhere.
+5. **Uniform Data Lifetime**
+
+	Clients should create data with similar lifetimes to reduce the cost of wear-leveling.
+
