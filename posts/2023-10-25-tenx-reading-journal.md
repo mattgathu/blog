@@ -23,6 +23,8 @@ tags:
 6. [Nov-06-2023 - Log Structured File Systems](#nov-06-2023)
 7. [Nov-14-2023 - Flash Based SSDs](#nov-14-2023)
 8. [Nov-15-2023 - The Unwritten Contract of Solid State Drives](#nov-15-2023)
+9. [Nov-20-2023 - HDFS Architecture](#nov-20-2023)
+
 ## Oct-25-2023
 
 **Title:** [Compile Times and Code Graphs](https://blog.danhhz.com/compile-times-and-code-graphs)
@@ -275,4 +277,52 @@ A set of rules that SSD clients should follow to obtain high perf.
 5. **Uniform Data Lifetime**
 
 	Clients should create data with similar lifetimes to reduce the cost of wear-leveling.
+
+### Nov-20-2023
+
+Title: [HDFS Architecture](https://hadoop.apache.org/docs/r3.3.6/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)
+
+The Hadoop Distributed File System (HDFS) is a distributed file system designed to run on commodity hardware. It's designed to be highly fault tolerant, have high read throughout and support large files.
+
+#### **Assumptions and Goals**
+1. **Hardware failure**: Hardware failure is the norm rather than the exception.  Detection of faults and automatic recovery is a core goal.
+2. **Streaming data access**: Applications that run on HDFS need streaming access to their data sets.
+3. **Simple Coherency Model**: HDFS applications need a write-once-read-many access model for files.
+4. **Moving computation is cheaper than moving data**: A computation requested by an application is much more efficient if it is executed near the data it operates on.
+5. **Portability**: HDFS has been designed to be easily portable from one platform to another.
+
+#### **Architecture**
+
+HDFS has a controller/worker architecture. A single **NameNode** (controller) server that manages the file system namespace and regulates access to files by clients. A number of **DataNodes** (worker), usually one per node in the cluster, manage storage attached to the nodes that they run on.
+
+![hdfs-arch]( /images/hdfs-arch.png)
+
+
+##### **Data Replication**
+
+HDFS stores each file as a sequence of blocks. The blocks are replicated for fault tolerance. The block size and replication factor are configurable per file. All blocks in a file except the last block are the same size.   
+An application can specify the number of replicas of a file. The replication factor can be specified at file creation time and can be changed later. Files in HDFS are mostly write-once and have strictly one writer at any time.
+
+The NameNode makes all decisions regarding replication of blocks. It periodically receives a Heartbeat and a Block report from each of the DataNodes in the cluster. Receipt of a Heartbeat implies that the DataNode is functioning properly. A Block report contains a list of all blocks on a DataNode.
+
+Data Replication involves:
+1. **Replica placement**: determines to where (in which data nodes) data is replicated. HDFS has a rack-aware replica placement policy to improve data reliability, availability, and network bandwidth utilization. By default the replication factor is 3; two replicas are on different nodes of one rack and the remaining replica is on a node of one of the other racks.
+2. **Replica selection**: To minimize global bandwidth consumption and read latency, HDFS tries to satisfy a read request from a replica that is closest to the reader.
+3. **Block placement**: similar to the replica placement.
+4. **Safe mode**:  The NameNode has a safe mode (usually at startup) in which it:
+	1. Receives block reports from data nodes: A Block report contains the list of data blocks that a DataNode is hosting.
+	2. Check that each data block has the minimum number of replicas.
+	3. Replicates missing data blocks, if any.
+
+##### File system metadata.
+
+This is handled by the NameNode. It uses a transaction log (EditLog) to persistently record every change that occurs to file system metadata. The entire file system namespace, including the mapping of blocks to files and file system properties, is stored in a file called the FsImage.
+
+During startup, the NameNode reads the FsImage and EditLog from disk, applies all the transactions from the EditLog to the in-memory representation of the FsImage, and flushes out this new version into a new FsImage on disk. It can then truncate the old EditLog because its transactions have been applied to the persistent FsImage. This process is called a checkpoint.
+
+
+
+
+
+
 
