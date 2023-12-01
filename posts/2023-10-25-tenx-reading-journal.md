@@ -12,6 +12,16 @@ tags:
   - rust
   - software-engineering
   - 💾
+  - databases
+  - hdfs
+  - lfs
+  - filesystems
+  - ostep
+  - linux
+  - "#async"
+  - "#ssd"
+  - "#mmap"
+  - "#distributed-systems"
 ---
 
 
@@ -24,6 +34,7 @@ tags:
 7. [Nov-14-2023 - Flash Based SSDs](#nov-14-2023)
 8. [Nov-15-2023 - The Unwritten Contract of Solid State Drives](#nov-15-2023)
 9. [Nov-20-2023 - HDFS Architecture](#nov-20-2023)
+10. [Nov-30-2023 - Bumper Sticker API Design](#nov-30-2023)
 
 ## Oct-25-2023
 
@@ -74,6 +85,8 @@ patterns.
 
 **Title:** [Introducing Glommio](https://www.datadoghq.com/blog/engineering/introducing-glommio/)
 
+#rust 
+
 [Glommio](https://github.com/DataDog/glommio/) is an async runtime by Datadog implemented using the thread-per-core shared-nothing paradigm.
 
 [Sharding](https://en.wikipedia.org/wiki/Shard_(database_architecture)) is necessary to implement thread-per-core, it partitions the keyspace to the various threads. Also since only a single thread operates on a shard, there's no need for locking; even if there might be several async tasks on the same thread their data access will be serialized.
@@ -88,9 +101,11 @@ Thread-per-core is possible in k8s if you:
 - Limit pods to [specific CPUs](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/)
 - Isolate hardware interrupts, so they are outside the pod
 
-### Nov-01-2023
+## Nov-01-2023
 
 **Title:** [Why Async Rust](https://without.boats/blog/why-async-rust/)
+
+#rust 
 
 This is an overview of why the async concurrency model exists the way it is today in rust.
 
@@ -127,9 +142,11 @@ trait Future {
 
 Future combinators require access to the future's state across await points. Pinning via the `Pin` type solved this by guaranteeing that a future won't move in memory and therefore is safe to have internal references.
 
-### Nov-05-2023
+## Nov-05-2023
 
 **Title:** [Are You Sure You Want to Use MMAP in Your Database Management System?](https://db.cs.cmu.edu/mmap-cidr2022/)
+
+#databases #filesystems #linux 
 
 I have been reading up on mmap and came across this paper. It covers correctness and perf issues that using mmap brings and how it's a terrible idea to use it. The paper focuses on DBMSes but I think the issues apply to a broader context.
 
@@ -171,9 +188,11 @@ In DBMSes it seems like a great substitute for [buffer bools](https://15445.cour
 	- mmap implementations across platforms are not compatible. windows vs linux vs darwin
 	- Since the OS manages the file mapping,  the in-memory data layout needs to match the physical representation on secondary storage, leading to wasted space and reduced I/O throughput. Notably no compression can be performed for data on disk.
 
-### Nov-06-2023
+## Nov-06-2023
 
 **Title:** [Log Structured File Systems](https://pages.cs.wisc.edu/~remzi/OSTEP/file-lfs.pdf)
+
+#lfs #filesystems #ostep
 
 A chapter in  the [OSTEP book](https://pages.cs.wisc.edu/~remzi/OSTEP/). 
 
@@ -229,9 +248,11 @@ How to recover when system crashes as LFS is writing to disk?
 - recovery starts at last CR and uses the **roll forward** technique
 
 
-### Nov-14-2023
+## Nov-14-2023
 
 Title: [Flash Based SSDs](https://pages.cs.wisc.edu/~remzi/OSTEP/file-ssd.pdf)
+
+#ssd #ostep 
 
 Another chapter in  the [OSTEP book](https://pages.cs.wisc.edu/~remzi/OSTEP/).
 
@@ -256,9 +277,11 @@ Most FTLs are log-structured, which reduces the cost of writing by minimizing er
 
 
 
-### Nov-15-2023
+## Nov-15-2023
 
 Title: [The Unwritten Contract of Solid State Drives](https://research.cs.wisc.edu/wind/Publications/nvmw18-he.pdf)
+
+#ssd 
 
 A set of rules that SSD clients should follow to obtain high perf.
 
@@ -278,9 +301,11 @@ A set of rules that SSD clients should follow to obtain high perf.
 
 	Clients should create data with similar lifetimes to reduce the cost of wear-leveling.
 
-### Nov-20-2023
+## Nov-20-2023
 
 Title: [HDFS Architecture](https://hadoop.apache.org/docs/r3.3.6/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)
+
+#distributed-systems  #filesystems #hdfs 
 
 The Hadoop Distributed File System (HDFS) is a distributed file system designed to run on commodity hardware. It's designed to be highly fault tolerant, have high read throughout and support large files.
 
@@ -316,7 +341,7 @@ Data Replication involves:
 
 ##### File system metadata.
 
-This is handled by the NameNode. It uses a transaction log (EditLog) to persistently record every change that occurs to file system metadata. The entire file system namespace, including the mapping of blocks to files and file system properties, is stored in a file called the FsImage.
+This is handled by the NameNode. It uses a transaction log (**EditLog**) to persistently record every change that occurs to file system metadata. The entire file system namespace, including the mapping of blocks to files and file system properties, is stored in a file called the **FsImage**.
 
 During startup, the NameNode reads the FsImage and EditLog from disk, applies all the transactions from the EditLog to the in-memory representation of the FsImage, and flushes out this new version into a new FsImage on disk. It can then truncate the old EditLog because its transactions have been applied to the persistent FsImage. This process is called a checkpoint.
 
@@ -326,3 +351,33 @@ During startup, the NameNode reads the FsImage and EditLog from disk, applies al
 
 
 
+
+
+## Nov-30-2023
+
+Title: [Bumper Sticker API Design](https://www.infoq.com/articles/API-Design-Joshua-Bloch/)
+
+#api-design 
+
+A set of maxims on good API design:
+
+##### Documentation
+- API should be self documenting.
+- Document every exported API element: every class, method, field, and parameter.
+##### Flexibility 
+- Gather requirements with skepticism - you have to find out the underlying problems.
+- Early drafts should be concise - makes it easy to refactor later.
+- Avoid fixed limits on input sizes.
+- Keep API free of Implementation details.
+##### Testing
+- Write use cases against your API before implementing it - don't implement wrong API.
+- Maintain code for use cases as API evolves.
+- Structure requirements as use-cases.
+##### Principles
+- Least astonishment - every method should do the least surprising thing it could, given its name.
+- Fail fast - the sooner you report a bug, the less damage it will do.
+- Easy to use and hard to misuse - easy to do simple things, possible to do complex things, hard to do wrong things
+- Names matter.
+- When in doubt, leave it out.
+- Exceptions are for exceptional conditions.
+- Its art, not science - strive for beauty.
