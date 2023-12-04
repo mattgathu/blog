@@ -35,6 +35,7 @@ tags:
 8. [Nov-15-2023 - The Unwritten Contract of Solid State Drives](#nov-15-2023)
 9. [Nov-20-2023 - HDFS Architecture](#nov-20-2023)
 10. [Nov-30-2023 - Bumper Sticker API Design](#nov-30-2023)
+11. [Dec-04-2023 - HTTP/3: the past, the present, and the future](#dec-04-2023)
 
 ## Oct-25-2023
 
@@ -381,3 +382,30 @@ A set of maxims on good API design:
 - When in doubt, leave it out.
 - Exceptions are for exceptional conditions.
 - Its art, not science - strive for beauty.
+
+
+## Dec-04-2023
+
+Title:  [HTTP/3: the past, the present, and the future](https://blog.cloudflare.com/http3-the-past-present-and-future/)
+
+#http #quic #rust 
+
+A look at the evolution of HTTP and it's future with QUIC and HTTP/3.
+
+Each revision of the HTTP protocol tries to solve problems of the previous revision.
+
+![http-tcp-tls](/images/http-request-over-tcp-tls.png)
+
+HTTP/1.1 introduced keep-alive connections to allow clients to reuse TCP connections and thus
+amortize initial connection setup costs. This reuse wasn't possible in 1.0.
+
+
+HTTP/2 introduced streams, an abstraction that allows implementations to concurrently multiplex different HTTP exchanges onto the same TCP connection, allowing browsers to be more efficient.
+
+![http2-streams](/images/http2-streams.png)
+
+HTTP/3 improve streams by making them first class citizens at the transport layer using the QUIC transport protocol. It eliminates the head-of-line blocking problem in HTTP/2. QUIC streams share the same QUIC connection but are independent and packet loss on one stream does not affect the rest.
+
+QUIC also merges the TCP handshake with the TLS 1.3 handshake, making encryption and auth to be provided by default and enabling faster connection establishments.
+
+![http-quic](/images/http-request-over-quic.png)
