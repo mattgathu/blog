@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Software 2023 Reading Journal
+title: 2023 Software Engineering Reading Journal
 date: Oct 25, 2023
 categories:
   - rust
