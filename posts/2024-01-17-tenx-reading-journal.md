@@ -39,6 +39,10 @@ Write your own subroutines instead of using standard ones or libraries. What I g
 
 > Before you can write your own subroutine, you have to know how. This means, to be practical, that you have written it before; which makes it difficult to get started. But give it a try. After writing the same subroutine a dozen times on as many computers and languages, you'll be pretty good at it.
 
+4. **Use names with mnemonic values**
+
+Use names that are easy to remember and with the correct grammatical connotations: nouns for variables, verbs for functions. Avoid clever words whose mnemonic value is too subjective. Use comments sparingly, your code should be self documenting. Comments should say _what_ the program is doing, not the _how_. The how should be obvious from the code.
+
 **Programs vs Input**
 
 > The simplest possible program is one that has no input.
