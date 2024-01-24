@@ -16,6 +16,7 @@ tags:
 ---
 
 1. [Jan-16-2024 - Programming a Problem Oriented Language](#jan-16-2024)
+2. [Jan-24-2024 - What is Complexity Science?](#jan-24-2024)
 
 ## Jan-16-2024
 
@@ -50,3 +51,41 @@ Use names that are easy to remember and with the correct grammatical connotation
 Chuck views input as information that controls a program, and, in that sense, a program without input has encapsulated all its complexity internally. On the other hand, a program that expects input has to contend with the complexity of the input.
 
 > In order to sharpen your recognition of input, let me describe a program that has input. Consider a program that fits a smooth curve through measured data points. It needs a lot of information in order to run: the number of data points, the spacing between points, the number of iterations to perform, perhaps even which function to fit. This information might be built into the program; if it is not, it must be supplied as input. The measured data itself, the object of the entire program, is not input; but must be accompanied by input in order to be intelligible.
+
+
+
+## Jan-24-2024
+**Title:** [What is Complexity Science?](https://complexityexplained.github.io/)
+
+This is a general explainer on complex systems. A complex system is a large collection of components that interact locally but self-organize to exhibit non-trivial properties at larger scales that can't be explained nor predicted from knowing the individual components alone.
+
+> "_There's no love in a carbon atom,_ _No hurricane in a water molecule,_ _No financial collapse in a dollar bill._"
+
+**Interactions**
+
+Components in a complex system interact in multiple ways. These interactions can generate new information that makes it hard to study the components individually or predict their future.
+The components can also be systems in of themselves, leading to a **system of systems**.
+
+Examples:
+* Computer networks
+* Neurons in the human brain
+
+**Emergence**
+
+The interaction of components in a complex system generate new properties that can not be deduced from the properties of the individual components. This phenomenon is emergence.
+*The whole is greater than the sum of its parts.*
+
+Examples:
+* air and water vapor forming a tornado
+* billions of neurons in the brain producing intelligence
+
+**Dynamics**
+
+Systems can be analyzed in terms of the changes of their states over time. A state is a set of variables that best characterized the system. Complex systems exhibit nonlinear change that is not proportional to time, the system's current state nor changes in the environment.
+
+**Adaptation**
+
+**Interdisciplinarity**
+
+**Methods**
+
