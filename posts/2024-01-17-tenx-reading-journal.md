@@ -57,9 +57,11 @@ Chuck views input as information that controls a program, and, in that sense, a 
 ## Jan-24-2024
 **Title:** [What is Complexity Science?](https://complexityexplained.github.io/)
 
-This is a general explainer on complex systems. A complex system is a large collection of components that interact locally but self-organize to exhibit non-trivial properties at larger scales that can't be explained nor predicted from knowing the individual components alone.
+This is a general explainer on complex systems. 
 
-> "_There's no love in a carbon atom,_ _No hurricane in a water molecule,_ _No financial collapse in a dollar bill._"
+A complex system is a large collection of components that interact locally but self-organize to exhibit non-trivial properties at larger scales that can't be explained nor predicted from knowing the individual components alone.
+
+> "_There's no love in a carbon atom,_ _No hurricane in a water molecule,_ _No financial collapse in a dollar bill._" - Peter Dodds
 
 **Interactions**
 
@@ -83,9 +85,52 @@ Examples:
 
 Systems can be analyzed in terms of the changes of their states over time. A state is a set of variables that best characterized the system. Complex systems exhibit nonlinear change that is not proportional to time, the system's current state nor changes in the environment.
 
+A system's stability varies from stable one that remain unchanged by small perturbation to un-stable ones that are disrupted by small perturbations. In some instances small changes in the environment completely changes the system; these are bifurcations, phase transitions or tipping points.
+
+Complex systems can be path dependent - its future is dependent on its present and past states.
+
+Example:
+* Financial volatility in the stock market
+
+
+**Self-Organization**
+
+The interaction of the components of a complex system may produce global patterns or behaviour; self-organization, without central or external control.
+Self-organization can produce physical structures such as crystalline patterns in materials or dynamic behaviours such as shoaling in fish.
+
+Example:
+* starlings flocking in complex patterns
+
 **Adaptation**
+
+Complex systems are always adaptive and responding to the environment. This adaptation can happen:
+* cognitively
+* by learning and psychological development
+* through information sharing
+* by evolutionary means: genetic variation and natural selection
+
+Adaptation gives complex systems the ability to be:
+* adaptive: able to change in order to remain functional and survive.
+* robust: withstand perturbations.
+* resilient: go back to previous state after perturbation
+
+Example:
+* immune system learning about pathogens
 
 **Interdisciplinarity**
 
+Complex systems have universality - many systems in different domains have common underlying features that can be described using the same models or principles.
+Complex systems appear in all scientific and professional domains.
+
+Example:
+* common properties of information processing systems: nervous system, internet
+
 **Methods**
+
+Mathematical and computational methods are useful tools to study complex systems.
+
+> Computers are also used to analyze massive data coming from complex systems to reveal and visualize hidden patterns that are not visible to human eyes. These computational methods can lead to discoveries that then deepen our understanding and appreciation of nature. 
+
+Example:
+* mathematical and computer models of the brain
 
