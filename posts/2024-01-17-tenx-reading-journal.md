@@ -22,6 +22,8 @@ tags:
 
 **Title** [Programming a Problem Oriented Language](https://colorforth.github.io/POL.htm)
 
+#forth 
+
 The opening chapters of this book by Chuck Moore cover basic principles around software writing. 
 
 He puts forward several ideas:
@@ -56,6 +58,8 @@ Chuck views input as information that controls a program, and, in that sense, a 
 
 ## Jan-24-2024
 **Title:** [What is Complexity Science?](https://complexityexplained.github.io/)
+
+#complexity-science 
 
 This is a general explainer on complex systems. 
 
