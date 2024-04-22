@@ -17,6 +17,7 @@ tags:
 
 1. [Jan-16-2024 - Programming a Problem Oriented Language](#jan-16-2024)
 2. [Jan-24-2024 - What is Complexity Science?](#jan-24-2024)
+3. [Feb-07-2024 - Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs](#feb-07-24)
 
 ## Jan-16-2024
 
@@ -137,4 +138,13 @@ Mathematical and computational methods are useful tools to study complex systems
 
 Example:
 * mathematical and computer models of the brain
+
+
+
+
+
+## Feb-07-2024
+**Title**: [Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs](https://arxiv.org/abs/1603.09320)
+
+A paper describing the HNSW algorithm for [Approximate Nearest Neighbour search](https://en.wikipedia.org/wiki/Nearest_neighbor_search).
 
