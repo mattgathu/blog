@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Swift iOS Bugs Log
+title: Swift iOS Log
 date: May 11, 2025
 categories:
   - code
-description: log of bugs encountered while using Swift on iOS 
+description: log of tricks and bugs encountered while using Swift on iOS 
 keywords: 2025, software
 author: Matt
 tags:
@@ -12,10 +12,11 @@ tags:
   - swift
   - ios
   - bugs
+  - tricks
 ---
 
 
-## Swiftdata: Duplicate version checksums detected
+## Swiftdata Bug: Duplicate version checksums detected
 
 iOS 18.4 simulator and device crashing with the following error:
 
@@ -24,13 +25,12 @@ iOS 18.4 simulator and device crashing with the following error:
 *** First throw call stack:
 ``` 
 
-
 This occurred when running swiftdata schema migrations.
 
 
 ### Solution
 
-Namespace all data models in versioned schema.
+Namespace all data models in versioned schemas.
 Avoid sharing models across different versions of the schema, even if they are identical.
 
 example:
